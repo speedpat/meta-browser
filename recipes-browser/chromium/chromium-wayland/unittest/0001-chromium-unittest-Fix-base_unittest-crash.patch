@@ -1,0 +1,11 @@
+--- a/base/process/process_util_unittest.cc	2013-10-09 09:53:49.000000000 +0200
++++ b/base/process/process_util_unittest.cc	2013-10-09 09:54:13.427267373 +0200
+@@ -65,7 +65,7 @@
+ const char kPosixShell[] = "sh";
+ #else
+ const char kShellPath[] = "/bin/sh";
+-const char kPosixShell[] = "bash";
++const char kPosixShell[] = "sh";
+ #endif
+ 
+ const char kSignalFileSlow[] = "SlowChildProcess.die";

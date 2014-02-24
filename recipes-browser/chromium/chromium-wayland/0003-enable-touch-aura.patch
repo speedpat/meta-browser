@@ -1,0 +1,28 @@
+From 779e164bc34fbe1de499f8622d7ba716d9c87776 Mon Sep 17 00:00:00 2001
+From: Patrick Heeb <patrick.heeb@noser.com>
+Date: Fri, 24 Jan 2014 10:33:59 +0100
+Subject: [PATCH 3/3] enable touch aura
+
+---
+ .../desktop_aura/desktop_root_window_host_x11.cc   |    5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/ui/views/widget/desktop_aura/desktop_root_window_host_x11.cc b/ui/views/widget/desktop_aura/desktop_root_window_host_x11.cc
+index 5faabce..84b7c2b 100644
+--- a/ui/views/widget/desktop_aura/desktop_root_window_host_x11.cc
++++ b/ui/views/widget/desktop_aura/desktop_root_window_host_x11.cc
+@@ -1351,10 +1351,7 @@ bool DesktopWindowTreeHostX11::Dispatch(const base::NativeEvent& event) {
+ 
+       switch (type) {
+         case ui::ET_TOUCH_MOVED:
+-          num_coalesced = ui::CoalescePendingMotionEvents(xev, &last_event);
+-          if (num_coalesced > 0)
+-            xev = &last_event;
+-          // fallthrough
++        case ui::ET_TOUCH_CANCELLED:
+         case ui::ET_TOUCH_PRESSED:
+         case ui::ET_TOUCH_RELEASED: {
+           ui::TouchEvent touchev(xev);
+-- 
+1.7.9.5
+

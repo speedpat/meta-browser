@@ -1,0 +1,27 @@
+From e6fe4a1ff9435ff9c6c08b02632474a9ce9cb186 Mon Sep 17 00:00:00 2001
+From: Patrick Heeb <patrick.heeb@noser.com>
+Date: Fri, 24 Jan 2014 13:23:51 +0100
+Subject: [PATCH] Fix issue with component linking
+
+---
+ build/common.gypi |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/build/common.gypi b/build/common.gypi
+index 7312a46..ec9b7b5 100644
+--- a/build/common.gypi
++++ b/build/common.gypi
+@@ -3635,6 +3635,10 @@
+               # gets the right path.
+               '-B<!(cd <(DEPTH) && pwd -P)/third_party/gold',
+             ],
++         }, {
++	           'ldflags': [
++	            '-Wl,--no-as-needed',
++	 	 ],
+           }],
+         ],
+       },
+-- 
+1.7.9.5
+

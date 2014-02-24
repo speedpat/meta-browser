@@ -1,0 +1,11 @@
+--- a/media/media.gyp	2013-10-16 10:33:02.236889859 +0200
++++ b/media/media.gyp	2013-10-16 10:32:09.836890757 +0200
+@@ -28,7 +28,7 @@
+       }, {
+         'use_alsa%': 0,
+       }],
+-      ['os_posix==1 and OS!="mac" and OS!="android" and chromeos!=1', {
++      ['os_posix==1 and OS!="mac" and OS!="android" and chromeos!=1 and OS!="linux"', {
+         'use_pulseaudio%': 1,
+       }, {
+         'use_pulseaudio%': 0,

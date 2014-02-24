@@ -1,0 +1,39 @@
+From 9f7e6f718536c3b8da1289d5c2f4f26bad23d1ad Mon Sep 17 00:00:00 2001
+From: Patrick Heeb <speedpat@biochips.(none)>
+Date: Thu, 20 Feb 2014 11:02:44 +0100
+Subject: [PATCH 5/5] fix link flags
+
+---
+ chrome/chrome_browser.gypi    |    2 +-
+ chrome/chrome_browser_ui.gypi |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/chrome/chrome_browser.gypi b/chrome/chrome_browser.gypi
+index edd0f3f..0ac2224 100644
+--- a/chrome/chrome_browser.gypi
++++ b/chrome/chrome_browser.gypi
+@@ -3083,7 +3083,7 @@
+             '../ui/gl/gl.gyp:gl',
+           ],
+         }],
+-        ['os_posix == 1 and OS != "mac" and OS != "ios" and OS != "android"', {
++        ['os_posix == 1 and use_x11 == 1 and OS != "mac" and OS != "ios" and OS != "android"', {
+           'link_settings': {
+             'libraries': [
+               '-lXss',
+diff --git a/chrome/chrome_browser_ui.gypi b/chrome/chrome_browser_ui.gypi
+index 915580d..bc57aa0 100644
+--- a/chrome/chrome_browser_ui.gypi
++++ b/chrome/chrome_browser_ui.gypi
+@@ -2970,7 +2970,7 @@
+             '../ui/gl/gl.gyp:gl',
+           ],
+         }],
+-        ['os_posix == 1 and OS != "mac" and OS != "ios" and OS != "android"', {
++        ['os_posix == 1 and use_x11 == 1 and OS != "mac" and OS != "ios" and OS != "android"', {
+           'link_settings': {
+             'libraries': [
+               '-lXss',
+-- 
+1.7.10.4
+

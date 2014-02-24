@@ -1,0 +1,113 @@
+From 885b216cfb0a68ac1741ea6f584be6e0adb18837 Mon Sep 17 00:00:00 2001
+From: Patrick Heeb <speedpat@biochips.(none)>
+Date: Mon, 17 Feb 2014 20:59:22 +0100
+Subject: [PATCH 102/102] commit patches
+
+---
+ build/common.gypi             |    4 ++++
+ build/linux/system.gyp        |   12 ------------
+ chrome/chrome_browser_ui.gypi |    2 ++
+ ui/gl/gl.gyp                  |    6 ++++++
+ 4 files changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/build/common.gypi b/build/common.gypi
+index 43f73de..0f9a6cf 100644
+--- a/build/common.gypi
++++ b/build/common.gypi
+@@ -3639,6 +3639,10 @@
+               # gets the right path.
+               '-B<!(cd <(DEPTH) && pwd -P)/third_party/gold',
+             ],
++         }, {
++	           'ldflags': [
++	            '-Wl,--no-as-needed',
++	 	 ],
+           }],
+         ],
+       },
+diff --git a/build/linux/system.gyp b/build/linux/system.gyp
+index 50435a4..1fc07ae 100644
+--- a/build/linux/system.gyp
++++ b/build/linux/system.gyp
+@@ -29,15 +29,12 @@
+             ['_toolset=="target"', {
+               'direct_dependent_settings': {
+                 'cflags': [
+-                  '<!@(<(pkg-config) --cflags gdk-2.0)',
+                 ],
+               },
+               'link_settings': {
+                 'ldflags': [
+-                  '<!@(<(pkg-config) --libs-only-L --libs-only-other gdk-2.0)',
+                 ],
+                 'libraries': [
+-                  '<!@(<(pkg-config) --libs-only-l gdk-2.0)',
+                 ],
+               },
+             }],
+@@ -56,29 +53,23 @@
+             ['_toolset=="target"', {
+               'all_dependent_settings': {
+                 'cflags': [
+-                  '<!@(<(pkg-config) --cflags <(gtk_packages))',
+                 ],
+               },
+               'link_settings': {
+                 'ldflags': [
+-                  '<!@(<(pkg-config) --libs-only-L --libs-only-other <(gtk_packages))',
+                 ],
+                 'libraries': [
+-                  '<!@(<(pkg-config) --libs-only-l <(gtk_packages))',
+                 ],
+               },
+             }, {
+               'all_dependent_settings': {
+                 'cflags': [
+-                  '<!@(pkg-config --cflags <(gtk_packages))',
+                 ],
+               },
+               'link_settings': {
+                 'ldflags': [
+-                  '<!@(pkg-config --libs-only-L --libs-only-other <(gtk_packages))',
+                 ],
+                 'libraries': [
+-                  '<!@(pkg-config --libs-only-l <(gtk_packages))',
+                 ],
+               },
+             }],
+@@ -91,15 +82,12 @@
+             ['_toolset=="target"', {
+               'direct_dependent_settings': {
+                 'cflags': [
+-                  '<!@(<(pkg-config) --cflags gtk+-unix-print-2.0)',
+                 ],
+               },
+               'link_settings': {
+                 'ldflags': [
+-                  '<!@(<(pkg-config) --libs-only-L --libs-only-other gtk+-unix-print-2.0)',
+                 ],
+                 'libraries': [
+-                  '<!@(<(pkg-config) --libs-only-l gtk+-unix-print-2.0)',
+                 ],
+               },
+             }],
+diff --git a/ui/gl/gl.gyp b/ui/gl/gl.gyp
+index 7374c86..d9eb000 100644
+--- a/ui/gl/gl.gyp
++++ b/ui/gl/gl.gyp
+@@ -124,6 +124,12 @@
+         '<(gl_binding_output_dir)/gl_bindings_autogen_osmesa.cc',
+         '<(gl_binding_output_dir)/gl_bindings_autogen_osmesa.h',
+       ],
++      'link_settings': {
++        'libraries': [
++          '-lEGL',
++          '-lGAL',
++        ],
++      },
+       # hard_dependency is necessary for this target because it has actions
+       # that generate header files included by dependent targets. The header
+       # files must be generated before the dependents are compiled. The usual
+-- 
+1.7.10.4
+

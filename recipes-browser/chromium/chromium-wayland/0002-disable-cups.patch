@@ -1,0 +1,24 @@
+From 66f6db56957e83ad99b34a60ffaa5162f0508c9b Mon Sep 17 00:00:00 2001
+From: Patrick Heeb <patrick.heeb@noser.com>
+Date: Fri, 24 Jan 2014 10:33:47 +0100
+Subject: [PATCH 2/3] disable cups
+
+---
+ chrome/browser/ui/libgtk2ui/libgtk2ui.gyp |    1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/chrome/browser/ui/libgtk2ui/libgtk2ui.gyp b/chrome/browser/ui/libgtk2ui/libgtk2ui.gyp
+index 19a108f..10176c9 100644
+--- a/chrome/browser/ui/libgtk2ui/libgtk2ui.gyp
++++ b/chrome/browser/ui/libgtk2ui/libgtk2ui.gyp
+@@ -29,7 +29,6 @@
+       ],
+       'defines': [
+         'LIBGTK2UI_IMPLEMENTATION',
+-        'USE_CUPS',
+       ],
+       # Several of our source files are named _gtk2.cc. This isn't to
+       # differentiate them from their source files (ninja and make are sane
+-- 
+1.7.9.5
+
