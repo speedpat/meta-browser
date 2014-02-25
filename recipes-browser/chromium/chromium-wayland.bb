@@ -42,7 +42,7 @@ FETCH_DEPENDENCY = "depot-tools-native"
 EXTRANATIVEPATH= "depot_tools"
 
 DEPS_FILE = "https://github.com/speedpat/ozone-wayland.git"
-DEPS_REV = "13a6b5adebae4fe3854861320002c4301f62415e"
+DEPS_REV = "d17f5d5cdacd20e2ed62f0a9fca6ed0fae51b536"
 
 python do_fetch_gclient() {
     import os
