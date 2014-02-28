@@ -1,0 +1,38 @@
+From 4ea2968e7cbb951067b047f6fe615d2b5e6e39b1 Mon Sep 17 00:00:00 2001
+From: Patrick Heeb <patrick.heeb@noser.com>
+Date: Wed, 26 Feb 2014 17:03:55 +0100
+Subject: [PATCH] fix egl CFLAGS and version
+
+---
+ wayland/wayland.gyp |    4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/wayland/wayland.gyp b/wayland/wayland.gyp
+index 5e667e5..ac937f4 100644
+--- a/wayland/wayland.gyp
++++ b/wayland/wayland.gyp
+@@ -20,7 +20,7 @@
+       'type': 'static_library',
+       'variables': {
+         'WAYLAND_VERSION': '1.2.0',
+-        'MESA_VERSION': '9.1.3',
++        'MESA_VERSION': '1.0.0',
+         'wayland_packages': [
+           'wayland-client >= <(WAYLAND_VERSION)',
+           'wayland-cursor >= <(WAYLAND_VERSION)',
+@@ -30,10 +30,12 @@
+       },
+       'cflags': [
+         '<!@(<(pkg-config) --cflags <(wayland_packages))',
++        '-DLINUX -DEGL_API_FB -DEGL_API_WL',
+       ],
+       'direct_dependent_settings': {
+         'cflags': [
+           '<!@(<(pkg-config) --cflags <(wayland_packages))',
++          '-DLINUX -DEGL_API_FB -DEGL_API_WL',
+         ],
+       },
+       'link_settings': {
+-- 
+1.7.10.4
+

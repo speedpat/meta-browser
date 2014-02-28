@@ -25,6 +25,7 @@ SRC_URI = "\
         file://0002-EGL-specific-changes-for-Wayland.patch;patchdir=src \
         file://1001-Mesa-fix.patch;patchdir=src/third_party/mesa/src \
         file://0004-fix-link-flags.patch;patchdir=src \
+        file://0001-accept-wayland-version-1.0.0-as-wayland-egl.pc-state.patch;patchdir=src/ozone \
 "
 
 PR = "r2"
