@@ -57,7 +57,7 @@ python do_fetch_gclient() {
     src_rev = d.getVar('DEPS_REV', True)
 
     runfetchcmd("gclient config --name=src/ozone --git-deps %s " % src_uri, d)
-    runfetchcmd("GYP_CHROMIUM_NO_ACTION=1 GYP_DEFINES=\"use_ash=0 use_aura=1 chromeos=0 use_ozone=1\" gclient sync --reset --nohooks --revision %s" % src_rev, d)
+    runfetchcmd("GYP_CHROMIUM_NO_ACTION=1 GYP_DEFINES=\"use_ash=0 use_aura=1 chromeos=0 use_ozone=1\" gclient sync --upstream --reset --nohooks --revision %s" % src_rev, d)
 }
 python do_fetch() {
     try:
